@@ -124,28 +124,28 @@ function articleMaker(data) {
   const para1 = document.createElement('p');
   const para2 = document.createElement('p');
   const para3 = document.createElement('p');
-  const expandButton = document.createElement('span');
+  const expand = document.createElement('span');
 
   article.classList.add('article');
   date.classList.add('date');
-  expandButton.classList.add('expandButton');
+  expand.classList.add('expandButton');
 
   title.textContent = data.title;
   date.textContent = data.date;
   para1.textContent = data.firstParagraph;
   para2.textContent = data.secondParagraph;
-  para3.textContentd = data.thirdParagragh;
-  expandButton.textcontent = '+';
+  para3.textContent = data.thirdParagraph;
+  expand.textContent = '+';
 
   article.appendChild(title);
   article.appendChild(date);
   article.appendChild(para1);
   article.appendChild(para2);
   article.appendChild(para3);
-  article.appendChild(expandButton);
+  article.appendChild(expand);
 
-  expandButton.addEventListener('click', (e) => {
-    e.classList.toggle('article-open');
+  expand.addEventListener('click', (e) => {
+    article.classList.toggle('article-open');
   });
   return article;
 }
@@ -157,3 +157,13 @@ const articleObj = data.map((data) => {
 articleObj.forEach((articleObj) => {
   articles.appendChild(articleObj);
 });
+
+const newArticle = articleMaker({
+  title: 'Juan Ruiz',
+  date: 'October 28, 2020',
+  firstParagraph: 'lorem impsum',
+  secondParagraph: 'lorem impsum',
+  thirdParagraph: 'lorem impsum',
+});
+
+articles.appendChild(newArticle);
